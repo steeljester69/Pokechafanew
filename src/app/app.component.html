@@ -1,0 +1,99 @@
+
+    <body [hidden]="!Inicio_Del_Juego">
+          <div class="canvas">
+              <div class = "pokmeon1-circle"></div>
+                    <div class="player-two-container">
+                      <div class="status1">
+                        <h2 class = "TextCont1">Ivysaur <span #countP2 class="health-count-p2">70/70   HP</span></h2>
+                        <div class="hp-container-mew">
+                            <span>
+                              <h2 class = "hp-text-p1">HP</h2>
+                            <div #p2Health class="bar p2-health"></div>
+                          </span>
+                        </div>
+                      </div>
+                      <img class="ai-image1" src="assets/ivysaur-export.png"  [class.tackleRival]="showTackleRival"/>
+                      @if(showSolarCharge){
+                        <div class="solar-charge"></div>
+                      }
+                      @if(showSolarBeam){
+                        <div class="solar-beam"></div>
+                      }
+                      @if(showSpore){
+                        <div class="spore-container">
+                          <div class="spore spore1"></div>
+                          <div class="spore spore2"></div>
+                          <div class="spore spore3"></div>
+                          <div class="spore spore4"></div>
+                          <div class="spore spore5"></div>
+                        </div>
+                      }
+                      @if(showAbsorb){
+                        <div class="absorber-container" >
+                          <div class="absorber-orb orb1"></div>
+                          <div class="absorber-orb orb2"></div>
+                          <div class="absorber-orb orb3"></div>
+                        </div>
+                        }
+                    </div>
+                  <div class = "player-one-c-container">
+                    <div class ="pokmeon2-circle"></div>
+                    <img class="ai-image2" src="assets/charmeleon-export.png" [class.tackle]="showTackle"/>
+                    <div class="status">
+                        <h2 class = "TextCont1">Charmander <span #countP1 class="health-count-p1">60/60 HP</span></h2>
+                        <div class="hp-container">
+                        <h2 class = "hp-text-p1">HP</h2>
+                        <div #p1Health class="bar p1-health"></div>
+                      </div>
+                    </div>
+                  </div>
+                    <div class="player-one-container">
+                      <div #gameStateText class="game-state"></div>
+                      <div #attackContainer class="attack-container">
+                        <div class="row">
+                        @if(showEmber){
+                          <div class="ember" [class.animate-ember]="showEmber"></div>
+                        }
+                        @if(showMetalclaw){
+                          <div class="metal-claw-animation "></div>
+                        }
+                        @if(showProtection){
+                          <div class="protect-shield"></div>
+                        }
+                        <button  class="attack1 btn" (click)="ember()">Ember</button>
+                        <button class="attack2 btn" (click)=" protection()">Protection</button>
+                        </div>
+                        <div class="row">
+                        <button class="attack3 btn" (click)="metalclaw()">Metal Claw</button>
+                        <button  class="attack4 btn" (click)="tackle()">Tackle</button>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+
+        </body>
+        @if(playerOneEstaDormido){
+          <div class= "sleep">SLP</div>
+        }
+        @if(showProtectEnemy){
+          <div class="protect-pokemon"></div>
+        }
+
+        @if(Fin_Del_Juego){
+          <div class = "endscrean" display = 'block'>
+              <h1 class="endWords">{{Ganador}} Wins</h1>
+              <button class = "restartButton" (click)=" restartGame()">PLAY AGAIN</button>
+            </div>
+         }
+        <div class="startscrean" [hidden] = "Inicio_Del_Juego === true">
+      <button #startbutton class = "startbutton" (click)="startGame()" >INICIAR JUEGO</button>
+    </div>
+
+
+
+
+
+
+
+
+
